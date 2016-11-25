@@ -1,0 +1,102 @@
+# This file is regenerated when update-kernels runs.  Do not edit
+# directly, edit the client's /etc/ltsp/update-kernels.conf instead.
+
+default ltsp-NBD
+ontimeout ltsp-NBD
+
+
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+label ltsp-NBD
+menu label LTSP, using NBD
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/nbd0
+ipappend 3
+
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+label ltsp-NFS
+menu label LTSP, using NFS
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/nfs ip=dhcp boot=nfs
+ipappend 3
+
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+label ltsp-AOE
+menu label LTSP, using AOE
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/etherd/e0.0
+ipappend 3
+
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+menu begin ltsp-versions-NBD
+menu label Other LTSP boot options using NBD
+
+
+label ltsp-NBD-4.4.0-47-generic
+menu label LTSP, using NBD, with Linux 4.4.0-47-generic
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/nbd0
+ipappend 3
+
+
+label ltsp-NBD-4.4.0-31-generic
+menu label LTSP, using NBD, with Linux 4.4.0-31-generic
+kernel vmlinuz-4.4.0-31-generic
+append ro initrd=initrd.img-4.4.0-31-generic init=/sbin/init-ltsp forcepae root=/dev/nbd0
+ipappend 3
+
+menu end
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+menu begin ltsp-versions-NFS
+menu label Other LTSP boot options using NFS
+
+
+label ltsp-NFS-4.4.0-47-generic
+menu label LTSP, using NFS, with Linux 4.4.0-47-generic
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/nfs ip=dhcp boot=nfs
+ipappend 3
+
+
+label ltsp-NFS-4.4.0-31-generic
+menu label LTSP, using NFS, with Linux 4.4.0-31-generic
+kernel vmlinuz-4.4.0-31-generic
+append ro initrd=initrd.img-4.4.0-31-generic init=/sbin/init-ltsp forcepae root=/dev/nfs ip=dhcp boot=nfs
+ipappend 3
+
+menu end
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+menu begin ltsp-versions-AOE
+menu label Other LTSP boot options using AOE
+
+
+label ltsp-AOE-4.4.0-47-generic
+menu label LTSP, using AOE, with Linux 4.4.0-47-generic
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/etherd/e0.0
+ipappend 3
+
+
+label ltsp-AOE-4.4.0-31-generic
+menu label LTSP, using AOE, with Linux 4.4.0-31-generic
+kernel vmlinuz-4.4.0-31-generic
+append ro initrd=initrd.img-4.4.0-31-generic init=/sbin/init-ltsp forcepae root=/dev/etherd/e0.0
+ipappend 3
+
+menu end
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+label memtest86+.bin
+menu label Memory test
+linux memtest86+.bin

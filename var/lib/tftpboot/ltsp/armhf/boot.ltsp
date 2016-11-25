@@ -1,0 +1,23 @@
+# Boot script for u-boot on arm systems
+
+# Configure the console
+if test -n ${console}; then
+    setenv bootargs ${bootargs} console=${console}
+fi
+
+setenv bootargs ${bootargs} init=/sbin/init-ltsp forcepae root=/dev/nbd0
+
+# Compatibility variables for versions of u-boot without standardized
+# variable names.
+test -z "${fdtfile}" && setenv fdtfile ${fdt_file}
+test -z "${fdt_addr_r}" && setenv fdt_addr_r ${fdtaddr}
+test -z "${fdt_addr_r}" && setenv fdt_addr_r ${fdt_addr}
+test -z "${kernel_addr_r}" && setenv kernel_addr_r ${loadaddr}
+test -z "${ramdisk_addr_r}" && setenv ramdisk_addr_r ${ramdiskaddr}
+test -z "${ramdisk_addr_r}" && setenv ramdisk_addr_r ${rdaddr}
+
+tftpboot ${kernel_addr_r} ${serverip}:/ltsp/armhf/vmlinuz-4.4.0-1029-raspi2 \
+&& tftpboot ${fdt_addr_r} ${serverip}:/ltsp/armhf/dtbs-4.4.0-1029-raspi2/${fdtfile} \
+&& tftpboot ${ramdisk_addr_r} ${serverip}:/ltsp/armhf/initrd.img-4.4.0-1029-raspi2 \
+&& echo booting LTSP armhf linux 4.4.0-1029-raspi2 \
+&& bootz ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r}

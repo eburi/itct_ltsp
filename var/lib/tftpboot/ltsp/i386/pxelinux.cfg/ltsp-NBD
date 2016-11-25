@@ -1,0 +1,9 @@
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+label ltsp-NBD
+menu label LTSP, using NBD
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/nbd0
+ipappend 3
+

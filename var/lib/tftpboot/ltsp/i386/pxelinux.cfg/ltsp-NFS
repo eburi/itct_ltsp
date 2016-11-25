@@ -1,0 +1,9 @@
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+label ltsp-NFS
+menu label LTSP, using NFS
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/nfs ip=dhcp boot=nfs
+ipappend 3
+

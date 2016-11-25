@@ -1,0 +1,32 @@
+TARGETS = tlp hostapd rsyslog uuidd killprocs apport binfmt-support dnsmasq nbd-server epoptes irqbalance hddtemp speech-dispatcher dbus openbsd-inetd ltsp-client-core whoopsie single ntp anacron ssh epoptes-client acpid kerneloops lightdm bluetooth avahi-daemon cron rsync cups-browsed avahi-dnsconfd cups saned plymouth grub-common ondemand rc.local
+INTERACTIVE =
+dnsmasq: rsyslog
+nbd-server: rsyslog
+epoptes: rsyslog
+irqbalance: rsyslog
+hddtemp: rsyslog
+speech-dispatcher: rsyslog
+dbus: rsyslog
+openbsd-inetd: rsyslog
+ltsp-client-core: rsyslog
+whoopsie: rsyslog
+single: killprocs
+ntp: rsyslog
+anacron: rsyslog
+ssh: rsyslog
+epoptes-client: rsyslog
+acpid: rsyslog
+kerneloops: dnsmasq rsyslog
+lightdm: dbus dnsmasq acpid
+bluetooth: rsyslog dbus
+avahi-daemon: dbus rsyslog
+cron: rsyslog dnsmasq
+rsync: rsyslog dnsmasq
+cups-browsed: rsyslog dnsmasq
+avahi-dnsconfd: rsyslog
+cups: rsyslog
+saned: rsyslog dbus
+plymouth: tlp hostapd dnsmasq rsyslog nbd-server uuidd cups-browsed epoptes irqbalance hddtemp speech-dispatcher kerneloops lightdm dbus openbsd-inetd avahi-dnsconfd bluetooth ltsp-client-core avahi-daemon whoopsie cups saned ntp cron anacron ssh apport epoptes-client rsync acpid binfmt-support
+grub-common: tlp hostapd dnsmasq rsyslog nbd-server uuidd cups-browsed epoptes irqbalance hddtemp speech-dispatcher kerneloops lightdm dbus openbsd-inetd avahi-dnsconfd bluetooth ltsp-client-core avahi-daemon whoopsie cups saned ntp cron anacron ssh apport epoptes-client rsync acpid binfmt-support
+ondemand: tlp hostapd dnsmasq rsyslog nbd-server uuidd cups-browsed epoptes irqbalance hddtemp speech-dispatcher kerneloops lightdm dbus openbsd-inetd avahi-dnsconfd bluetooth ltsp-client-core avahi-daemon whoopsie cups saned ntp cron anacron ssh apport epoptes-client rsync acpid binfmt-support
+rc.local: tlp hostapd dnsmasq rsyslog nbd-server uuidd cups-browsed epoptes irqbalance hddtemp speech-dispatcher kerneloops lightdm dbus openbsd-inetd avahi-dnsconfd bluetooth ltsp-client-core avahi-daemon whoopsie cups saned ntp cron anacron ssh apport epoptes-client rsync acpid binfmt-support

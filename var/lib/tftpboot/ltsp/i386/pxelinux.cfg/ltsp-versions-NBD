@@ -1,0 +1,21 @@
+# This file is regenerated when update-kernels runs.
+# Do not edit, see /etc/ltsp/update-kernels.conf instead.
+
+menu begin ltsp-versions-NBD
+menu label Other LTSP boot options using NBD
+
+
+label ltsp-NBD-4.4.0-47-generic
+menu label LTSP, using NBD, with Linux 4.4.0-47-generic
+kernel vmlinuz-4.4.0-47-generic
+append ro initrd=initrd.img-4.4.0-47-generic init=/sbin/init-ltsp forcepae root=/dev/nbd0
+ipappend 3
+
+
+label ltsp-NBD-4.4.0-31-generic
+menu label LTSP, using NBD, with Linux 4.4.0-31-generic
+kernel vmlinuz-4.4.0-31-generic
+append ro initrd=initrd.img-4.4.0-31-generic init=/sbin/init-ltsp forcepae root=/dev/nbd0
+ipappend 3
+
+menu end
