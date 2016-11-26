@@ -1,8 +1,0 @@
-# This is a configuration file to build an LTSP chroot for Raspberry Pi 2.
-MOUNT_PACKAGE_DIR="/var/cache/apt/archives"
-APT_KEYS="/etc/ltsp/ts_sch_gr-ppa.key /etc/ltsp/ubuntu-raspi23-ppa.key"
-EXTRA_MIRROR="http://ppa.launchpad.net/ubuntu-raspi2/ppa-rpi3/ubuntu $DIST main"
-EXTRA_MIRROR="http://ppa.launchpad.net/ts.sch.gr/ppa/ubuntu $DIST main"
-KERNEL_ARCH="raspi2"
-EARLY_PACKAGES="u-boot-rpi u-boot-tools"
-LATE_PACKAGES="dosfstools less nano ssh ltsp-client-core"
