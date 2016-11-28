@@ -1,0 +1,80 @@
+
+
+LTSP Setup
+
+
+
+apt-get --yes --install-recommends install dnsmasq ltsp-server-standalone ltsp-client ldm-ubuntu-theme vim epoptes git qemu-user-static binfmt-support iptables-persistent
+
+ltsp-config dnsmasq
+echo 'IPAPPEND=3' >> /etc/ltsp/update-kernels.conf
+/usr/share/ltsp/update-kernels
+
+# temporarily disable dnsmasp because of DNS issue
+systemctl stop dnsmasq
+
+# ltsp admin user (e.g. joseph) to epoptes groupt
+gpasswd -a joseph epoptes
+
+
+sudo iptables --table nat --append POSTROUTING --jump MASQUERADE  --source 192.168.67.0/24
+sudo netfilter-persistent save
+
+# in /etc/sysctl.conf SET/UNCOMMENT net.ipv4.ip_forward=1
+
+
+
+# as joseph
+mkdir ltsp-setup
+cd ltsp-setup/
+git clone https://github.com/eburi/itct_ltsp.git
+
+
+
+# as root
+cd /home/joseph/ltsp-setup/itct_ltsp/ 
+cp etc/dnsmasq.conf /etc/dnsmasq.conf
+cp etc/dnsmasq.d/* /etc/dnsmasq.d/
+cp -r etc/ltsp/* /etc/ltsp/
+
+cp var/lib/tftpboot/* /var/lib/tftpboot/
+
+
+
+
+root@matoke:/etc/ltsp# cat ltsp-build-client-raspi2_itct.conf
+# This is a configuration file to build an LTSP chroot for Raspberry Pi 2.
+MOUNT_PACKAGE_DIR="/var/cache/apt/archives"
+#APT_KEYS="/etc/ltsp/ubuntu-raspi23-ppa.key"
+#EXTRA_MIRROR="http://ppa.launchpad.net/ubuntu-raspi2/ppa-rpi3/ubuntu $DIST main"
+#APT_KEYS="/etc/ltsp/ts_sch_gr-ppa.key"
+#EXTRA_MIRROR="http://ppa.launchpad.net/ts.sch.gr/ppa/ubuntu $DIST main"
+KERNEL_ARCH="raspi2"
+FAT_CLIENT=1
+FAT_CLIENT_DESKTOPS="lubuntu-desktop"
+LATE_PACKAGES="dosfstools less nano vim ssh firefox epoptes-client"
+root@matoke:/etc/ltsp# 
+
+
+add-apt-repository --yes ppa:ubuntu-raspi2/ppa-rpi3
+Key should be: 8CBCF2F2
+
+
+# remove any previous armhf-chroot (or save it somewhere)
+rm -r /opt/ltsp/armhf/
+
+# build client (chroot etc)
+ltsp-build-client --arch armhf --config /etc/ltsp/ltsp-build-client-raspi2_itct.conf
+
+
+## epoptes certificates
+sudo ltsp-chroot -ma armhf
+epoptes-client -c
+exit
+
+sudo ltsp-update-image
+
+
+
+
+
