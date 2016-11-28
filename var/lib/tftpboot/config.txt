@@ -2,10 +2,13 @@
 # http://www.raspberrypi.org/documentation/configuration/config-txt.md
 # Some settings may impact device functionality. See link above for details
 
-kernel=uboot.bin
+kernel=u-boot.bin
 
 # enable uart (needed for u-boot on RPi3)
 enable_uart=1
+
+disable_splash=1
+start_x=1
 
 # set extended DT area
 device_tree_address=0x100
@@ -35,7 +38,7 @@ dtparam=spi=on
 #framebuffer_height=720
 
 # uncomment if hdmi display is not detected and composite is being output
-#hdmi_force_hotplug=1
+hdmi_force_hotplug=1
 
 # uncomment to force a specific HDMI mode (this will force VGA)
 #hdmi_group=1

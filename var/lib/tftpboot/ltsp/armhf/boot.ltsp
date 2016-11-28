@@ -16,8 +16,8 @@ test -z "${kernel_addr_r}" && setenv kernel_addr_r ${loadaddr}
 test -z "${ramdisk_addr_r}" && setenv ramdisk_addr_r ${ramdiskaddr}
 test -z "${ramdisk_addr_r}" && setenv ramdisk_addr_r ${rdaddr}
 
-tftpboot ${kernel_addr_r} ${serverip}:/ltsp/armhf/vmlinuz-4.4.0-1029-raspi2 \
-&& tftpboot ${fdt_addr_r} ${serverip}:/ltsp/armhf/dtbs-4.4.0-1029-raspi2/${fdtfile} \
-&& tftpboot ${ramdisk_addr_r} ${serverip}:/ltsp/armhf/initrd.img-4.4.0-1029-raspi2 \
-&& echo booting LTSP armhf linux 4.4.0-1029-raspi2 \
+tftpboot ${kernel_addr_r} ${serverip}:/ltsp/armhf/vmlinuz-4.4.0-1009-raspi2 \
+&& tftpboot ${fdt_addr_r} ${serverip}:/ltsp/armhf/dtbs-4.4.0-1009-raspi2/${fdtfile} \
+&& tftpboot ${ramdisk_addr_r} ${serverip}:/ltsp/armhf/initrd.img-4.4.0-1009-raspi2 \
+&& echo booting LTSP armhf linux 4.4.0-1009-raspi2 \
 && bootz ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r}
