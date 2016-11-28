@@ -1,5 +1,0 @@
-# This file is regenerated when update-kernels runs.
-# Do not edit, see /etc/ltsp/update-kernels.conf instead.
-label memtest86+.bin
-menu label Memory test
-linux memtest86+.bin
